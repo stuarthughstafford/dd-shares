@@ -6,9 +6,9 @@ custom:
   tableName: 'users-table-${self:provider.stage}'
   wsgi:
     app: app.app
- #1 datadog:
- #1   addExtension: true
- #1   apiKey:  # your DD API key
+#1  datadog:
+#1    addExtension: true
+#1    apiKey: # your DD API key
 
 provider:
   name: aws

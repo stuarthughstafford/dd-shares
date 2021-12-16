@@ -29,10 +29,18 @@ def get_user(user_id):
     item = result.get('Item')
     if not item:
         return jsonify({'error': 'Could not find user with provided "userId"'}), 404
-
-    return jsonify(
-        {'userId': item.get('userId').get('S'), 'name': item.get('name').get('S')}
-    )
+    else:
+        # add custom tags to the lambda function span
+        #2 current_span = tracer.current_span()
+        #2 if current_span:
+        #2     print('Current span!') # this add a log entry
+        #2     current_span.set_tag('abc_francesco', 'user1234') # this set a custom tag
+        # submit a custom span
+        #2 with tracer.trace("hello.world"):
+        #2     print('Hello, World!') # this add a span
+        return jsonify(
+            {'userId': item.get('userId').get('S'), 'name': item.get('name').get('S')}
+        )
 
 
 @app.route('/users', methods=['POST'])

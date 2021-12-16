@@ -181,14 +181,21 @@ plugins:
 
 #### Updating the function
 
-```
+```bash
 serverless deploy
 ```
 
 #### Adding a custom metric or span
 
 Edit the app.py file and uncomment where you find #2
-See the references below for more information
+See the references below for more information.
+
+The libraries are included in the datadog extension (or plugin) which is deployed through serverless, so you don't need to add it in the requirements file.
+
+```python
+#2 from ddtrace import tracer 
+#2 from datadog_lambda.metric import lambda_metric
+```
 
 
 ## References
