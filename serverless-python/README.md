@@ -15,6 +15,10 @@ authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
 
 This template demonstrates how to develop and deploy a simple Python Flask API service, backed by DynamoDB, running on AWS Lambda using the traditional Serverless Framework.
 
+This project is based on the following examples repository:
+https://github.com/serverless/examples
+
+I have added what is required to get the Datadog AWS integration to work as explained below
 
 ## Anatomy of the template
 
@@ -42,7 +46,7 @@ In order to collect data from the deployed function you need to install the data
 serverless plugin install -n serverless-plugin-datadog
 ```
 
-### Deployment
+### Initial Deployment
 
 This example is made to work with the Serverless Framework dashboard, which includes advanced features such as CI/CD, monitoring, metrics, etc.
 
@@ -136,4 +140,59 @@ If you try to retrieve user that does not exist, you should receive the followin
 ```bash
 {"error":"Could not find user with provided \"userId\""}
 ```
+
+### Enable dd traces/metrics/logs
+
+#### Changes to serverless.yml
+
+Edit the file serverless.yml and edit/uncomment the following sections:
+
+```yaml
+custom:
+...
+...
+ #1 datadog:
+ #1   addExtension: true
+ #1   apiKey:  # your DD API key
+```
+
+Remember to add your dd API key above ^^.
+
+```yaml
+provider:
+...
+...
+#1  tags: # more here https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes#aws-lambda-functions
+#1    env: dev # dd tag for the environment
+#1    service: aws-python-flask-dynamodb-api # dd tag for service name
+#1    version: '1.0' # dd tag for app version
+#1    datadog: true 
+#1    owner: francesco
+```
+
+Remember to change the owner above ^^.
+
+```yaml
+plugins:
+...
+...
+#1  - serverless-plugin-datadog # needed to gather metrics
+```
+
+#### Updating the function
+
+```
+serverless deploy
+```
+
+#### Adding a custom metric or span
+
+Edit the app.py file and uncomment where you find #2
+See the references below for more information
+
+
+## References
+
+About instrumenting AWS lambda for Python apps:
+https://docs.datadoghq.com/serverless/installation/python
 

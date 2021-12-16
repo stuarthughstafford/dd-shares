@@ -3,6 +3,10 @@ import os
 import boto3
 from flask import Flask, jsonify, make_response, request
 
+#2 import time
+#2 from ddtrace import tracer
+#2 from datadog_lambda.metric import lambda_metric
+
 app = Flask(__name__)
 
 

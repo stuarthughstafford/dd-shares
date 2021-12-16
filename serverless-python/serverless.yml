@@ -6,9 +6,9 @@ custom:
   tableName: 'users-table-${self:provider.stage}'
   wsgi:
     app: app.app
-  datadog:
-    addExtension: true
-    apiKey:  # your DD API key
+ #1 datadog:
+ #1   addExtension: true
+ #1   apiKey:  # your DD API key
 
 provider:
   name: aws
@@ -17,12 +17,12 @@ provider:
   stage: beta # defualt is dev, changed into beta to find it quickly :)
   region: eu-central-1 # the region where my dd integration with AWS through cloudformation is configured
   profile: default # the profile name in the file ~/.aws/credentials for serverless
-  tags: # more here https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes#aws-lambda-functions
-    env: dev # dd tag for the environment
-    service: aws-python-flask-dynamodb-api # dd tag for service name
-    version: '1.0' # dd tag for app version
-    datadog: true 
-    owner: francesco
+#1  tags: # more here https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes#aws-lambda-functions
+#1    env: dev # dd tag for the environment
+#1    service: aws-python-flask-dynamodb-api # dd tag for service name
+#1    version: '1.0' # dd tag for app version
+#1    datadog: true 
+#1    owner: francesco
   iam:
     role:
       statements:
@@ -53,7 +53,7 @@ functions:
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
-  - serverless-plugin-datadog # needed to gather metrics
+#1  - serverless-plugin-datadog # needed to gather metrics
 
 resources:
   Resources:
