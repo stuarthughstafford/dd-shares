@@ -14,6 +14,7 @@ provider:
   name: aws
   runtime: python3.9
   lambdaHashingVersion: '20211216'
+  deploymentBucket:  #<bucket name> specify an existing bucket 
   stage: beta # defualt is dev, changed into beta to find it quickly :)
   region: eu-central-1 # the region where my dd integration with AWS through cloudformation is configured
   profile: default # the profile name in the file ~/.aws/credentials for serverless

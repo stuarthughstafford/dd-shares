@@ -197,6 +197,11 @@ The libraries are included in the datadog extension (or plugin) which is deploye
 #2 from datadog_lambda.metric import lambda_metric
 ```
 
+#### Cleaning up
+
+```bash
+serverless remove
+```
 
 ## References
 
