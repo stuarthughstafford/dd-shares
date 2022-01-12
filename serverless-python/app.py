@@ -37,7 +37,7 @@ def get_user(user_id):
         #2     current_span.set_tag('abc_francesco', 'user1234') # this set a custom tag
         # submit a custom span
         #2 with tracer.trace("hello.world"):
-        #2     print('Hello, World!') # this add a span
+        #2    print('Hello, World!') # this add a span
         return jsonify(
             {'userId': item.get('userId').get('S'), 'name': item.get('name').get('S')}
         )

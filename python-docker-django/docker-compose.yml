@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  pythondocker:
+    image: pythondocker
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8000:8000
+    environment:
+      - 'DATADOG_TRACE_AGENT_HOSTNAME=dd-agent-cluster-ip'
+      - 'DATADOG_TRACE_DEBUG=true'
