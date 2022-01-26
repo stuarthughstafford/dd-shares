@@ -1,3 +1,5 @@
 ddtrace
 Flask
 gunicorn
+requests
+JSON-log-formatter
