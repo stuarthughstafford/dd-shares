@@ -22,11 +22,11 @@ def index():
 	#logger.info({"special": "value", "run": 12})
     return 'hello world!!'
 
-@app.route('/stu')
+@app.route('/test_endpoint')
 def stu():
-    #logging.info("Stuart logging")
-    logger.info({"endpoint": "stuart", "check": "See if this message is correlated"})
-    return 'hello stu!!'
+    #logging.info("Test logging")
+    logger.info({"endpoint": "test_endpoint", "check": "See if this message is correlated in Datadog"})
+    return 'hello Test logging!!'
 	
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
