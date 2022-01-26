@@ -5,7 +5,7 @@ import json_log_formatter
 
 app = Flask(__name__)
 
-# Set the logging so the traces and logs are correlated
+# Set the logging so the traces and logs are correlated.
 formatter = json_log_formatter.JSONFormatter()
 json_handler = logging.StreamHandler()
 json_handler.setFormatter(formatter)
