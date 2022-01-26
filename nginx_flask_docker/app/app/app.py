@@ -23,7 +23,7 @@ def index():
     return 'hello world!!'
 
 @app.route('/test_endpoint')
-def stu():
+def test_endpoint():
     #logging.info("Test logging")
     logger.info({"endpoint": "test_endpoint", "check": "See if this message is correlated in Datadog"})
     return 'hello Test logging!!'
